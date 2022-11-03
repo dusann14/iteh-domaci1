@@ -1,0 +1,25 @@
+html, body{
+
+    background-image: url('../img/login_slika.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+
+table {
+    margin-top: 10%;
+    opacity: 0.95;
+}
+
+.table-sortable tbody tr {
+    cursor: move;
+}
+
+tbody{
+    background-color: grey;
+    
+}
+
+thead{
+    background-color: white;
+}
