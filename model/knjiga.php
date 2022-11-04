@@ -2,15 +2,15 @@
 
 class Knjiga{
 
-    public $id;
+    public $knjigaId;
     public $naslov;
     public $autor;
     public $godinaNastanka;
     public $cena;
 
-    public function __construct($id, $naslov, $autor, $godinaNastanka, $cena)
+    public function __construct($knjigaId, $naslov, $autor, $godinaNastanka, $cena)
     {
-        $this->id = $id;
+        $this->knjigaId = $knjigaId;
         $this->naslov = $naslov;
         $this->autor = $autor;
         $this->godinaNastanka = $godinaNastanka;

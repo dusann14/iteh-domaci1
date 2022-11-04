@@ -20,7 +20,7 @@
 			<table class="table table-bordered table-hover table-sortable" id="tab_logic">
 				<thead>
 					<tr >
-                        <th class="text-center">
+                        <th class="text-center"> 
 							Id
 						</th>
 						<th class="text-center">

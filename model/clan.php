@@ -7,16 +7,15 @@ class Clan{
     public $prezime;
     public $email;
     public $pass;
-    public $knjige;
 
-    public function __construct($userName, $ime, $prezime, $email, $pass, $knjige)
+    public function __construct($userName, $ime, $prezime, $email, $pass)
     {
         $this->userName = $userName;
         $this->ime = $ime;
         $this->prezime = $prezime;
         $this->email = $email;
         $this->pass = $pass;
-        $this->knjige = $knjige;
+
     }
 
 
