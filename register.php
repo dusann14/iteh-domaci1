@@ -1,3 +1,29 @@
+<?php
+
+require 'dbBroker.php';
+require 'model/clan.php';
+
+if(isset($_POST['submit'])){
+
+	$userName = mysqli_real_escape_string($conn, $_POST['userName']);
+	$ime = mysqli_real_escape_string($conn, $_POST['ime']);
+	$prezime = mysqli_real_escape_string($conn, $_POST['prezime']);
+	$email = mysqli_real_escape_string($conn, $_POST['email']);
+	$pass = mysqli_real_escape_string($conn, $_POST['lozinka']);
+	$pass1 = mysqli_real_escape_string($conn, $_POST['ponovi_lozinku']);
+	
+	$result = Clan::check($userName, $conn);
+
+	if(mysqli_num_rows($result) != 0){
+		echo '<script type="text/javascript">alert("Korisnicko ime je zauzeto!")</script>';
+	}else {
+		Clan::add($userName, $ime, $prezime, $email, $pass, $conn);
+		header("location: login.php");
+	}
+
+}
+
+?>
 
 <!DOCTYPE html>
 <html>
@@ -10,34 +36,34 @@
 </head>
 
 <body>
-<form id = "registracija">
+<form action = '', method = 'post' id = "registracija">
 		<h1>Registracija korisnika</h1>
 		<div>
 			<label for="korisnicko_ime">Korisničko ime:</label>
-			<input id="korisnicko_ime" type="text" name="korisnicko_ime" placeholder="niko.nikolic1">
+			<input id="korisnicko_ime" type="text" name="userName" required placeholder="Korisnicko ime">
 		</div>
 		<div>
 			<label for="ime">Ime:</label>
-			<input id="ime" type="text" name="ime" placeholder="Niko">
+			<input id="ime" type="text" name="ime" required placeholder="Ime">
 		</div>
 		<div>
 			<label for="prezime">Prezime:</label>
-			<input id="prezime" type="text" name="prezime" placeholder="Nikolic">
+			<input id="prezime" type="text" name="prezime" required placeholder="Prezime">
 		</div>
 		<div>
 			<label for="email">Email adresa:</label>
-			<input id="email" type="text" name="email" placeholder="niko.nikolic@mail.com">
+			<input id="email" type="text" name="email" required placeholder="someone@mail.com">
 		</div>
 		<div>
 			<label for="lozinka">Lozinka:</label>
-			<input id="lozinka" type="text" name="lozinka" placeholder="*******">
+			<input id="lozinka" type="text" name="lozinka" required placeholder="*******">
 		</div>
 		<div>
 			<label for="ponovi_lozinku">Ponovi lozinku:</label>
-			<input id="ponovi_lozinku" type="text" name="ponovi_lozinku" placeholder="*******">
+			<input id="ponovi_lozinku" type="text" name="ponovi_lozinku" required placeholder="*******">
 		</div>
 		<div>
-			<button type = "submit">Registruj se</button>
+			<input class = "sub" type="submit" name = "submit" value = "Registruj se">
 		</div>
 	</form>
 

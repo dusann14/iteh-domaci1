@@ -1,7 +1,7 @@
 let inputs = document.querySelectorAll('input');
 
 let errors = {
-	"korisnicko_ime": [],
+	"userName": [],
 	"ime": [],
 	"prezime": [],
 	"email": [],

@@ -1,4 +1,35 @@
+<?php
 
+require 'dbBroker.php';
+require 'model/clan.php';
+
+session_start();
+
+if(isset($_POST['submit'])){
+
+	$userName = mysqli_real_escape_string($conn, $_POST['korisnicko_ime']);
+	$pass = mysqli_real_escape_string($conn, $_POST['lozinka']);
+
+	$result = Clan::logIn($userName, $pass, $conn);
+
+	if(mysqli_num_rows($result) != 0){
+
+		$row = mysqli_fetch_array($result);
+
+		if($row['userName'] == 'admin'){
+			$_SESSION['admin_name'] = $row['name'];
+			header("Location: admin.php");
+		}else{
+			$_SESSION['user_name'] = $row['name'];
+			header("Location: home.php");
+		}
+		echo '<script type="text/javascript">alert("Uspesno ste se prijavili!")</script>';	
+	}else{
+		echo '<script type="text/javascript">alert("Netacna lozinka ili korisnicko ime")</script>';
+	}
+
+}
+?>
 
 <!DOCTYPE html>
 <html>
@@ -26,18 +57,18 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
-						<input type="text" class="form-control" placeholder="username">
+						<input name = "korisnicko_ime" type="text" class="form-control" required placeholder="username">
 						
 					</div>
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
 						</div>
-						<input type="password" class="form-control" placeholder="password">
+						<input name = "lozinka" type="password" class="form-control" required placeholder="password">
 					</div>
 					
 					<div class="form-group">
-						<input type="submit" value="Login" class="btn float-right login_btn">
+						<input type="submit" name = "submit" value="Login" class="btn float-right login_btn">
 					</div>
 				</form>
 			</div>
@@ -50,7 +81,6 @@
 		</div>
 	</div>
 </div>
-	<script src="js/login.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 </html>

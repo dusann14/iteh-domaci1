@@ -15,11 +15,15 @@ class Clan{
         $this->prezime = $prezime;
         $this->email = $email;
         $this->pass = $pass;
-
     }
 
     public static function logIn($userName, $pass, mysqli $conn){
-        $q = "select * from clan where userName= '" . $userName . "' and pass ='" . $pass . "' limit 1;";
+        $q = "select * from clan where userName= '$userName' and pass ='$pass' limit 1;";
+        return $conn->query($q);
+    }
+
+    public static function check($userName, $conn){
+        $q = "select * from clan where userName= '$userName'";
         return $conn->query($q);
     }
 
@@ -37,7 +41,7 @@ class Clan{
     public static function add($userName, $ime, $prezime, $email, $pass, mysqli $conn)
     {
 
-        $q = "INSERT INTO clan(userName, ime, prezime, email, pass) values('$userName', '$ime', '$prezime',  '$email', '$pass')";
+        $q = "INSERT INTO clan(userName, ime, prezime, email, pass) VALUES('$userName', '$ime', '$prezime',  '$email', '$pass')";
         return $conn->query($q);
     }
 
