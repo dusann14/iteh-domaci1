@@ -1,8 +1,9 @@
 let inputs = document.querySelectorAll('input');
 
 let errors = {
-	"ime_prezime": [],
 	"korisnicko_ime": [],
+	"ime": [],
+	"prezime": [],
 	"email": [],
 	"lozinka": [],
 	"ponovi_lozinku": []
@@ -15,18 +16,12 @@ inputs.forEach((element) => {
 		let inputValue = currentInput.value;
 		let inputName = currentInput.getAttribute('name');
 
-		if(inputValue.length > 4){
+		if(inputValue.length > 2){
 
 			errors[inputName] = [];
 
 			switch(inputName){
-				case 'ime_prezime': 
-					let validation = inputValue.trim();		
-					validation = validation.split(" ");
-					if(validation.length<2)
-						errors[inputName].push('Moras napisati i ime i prezime');
-					break;
-
+				
 				case 'email': 
 					if(!validateEmail(inputValue))
 						errors[inputName].push('Neispravan email');
@@ -40,7 +35,7 @@ inputs.forEach((element) => {
 			}
 
 		}else {
-			errors[inputName] = ['Polje ne moze imati manje od 5 karaktera'];
+			errors[inputName] = ['Polje ne moze imati manje od 2 karaktera'];
 
 		}
 
@@ -81,6 +76,7 @@ const validateEmail = email => {
 	return false;
 
 }
+
 
 
 

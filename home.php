@@ -13,52 +13,68 @@
 
 	</head>
 	<body>
+
+	<h1 class="naslov">DOBRODOSAO DUSANN14</h1>
+	<div class = "tabele">
 	<section class="ftco-section">
 		<div class="container">
 
 			<div class="row">
 				<div class="col-md-12">
 					<div class="table-wrap">
-						<table class="table table-bordered table-dark table-hover">
+						<table class="table table-bordered table-dark table-hover" style="table-layout: fixed;">
 						  <thead>
 						    <tr>
 						      <th>#</th>
-						      <th>First Name</th>
-						      <th>Last Name</th>
-						      <th>Email</th>
+						      <th>Naslov</th>
+						      <th>Autor</th>
+						      <th>Godina nastanka</th>
+							  <th>Cena</th>
+							  <th>Izaberi</th>
 						    </tr>
 						  </thead>
 						  <tbody>
 						    <tr>
 						      <th scope="row">1</th>
-						      <td>Mark</td>
-						      <td>Otto</td>
-						      <td>markotto@email.com</td>
+						      <td></td>
+						      <td></td>
+						      <td></td>
+							  <td></td>
+							  <td><input type="radio" name = "izaberi"></td>
 						    </tr>
 						    <tr>
 						      <th scope="row">2</th>
-						      <td>Jacob</td>
-						      <td>Thornton</td>
-						      <td>jacobthornton@email.com</td>
+						      <td></td>
+						      <td></td>
+						      <td></td>
+							  <td></td>
+							  <td><input type="radio" name = "izaberi"></td>
 						    </tr>
 						    <tr>
 						      <th scope="row">3</th>
-						      <td>Larry</td>
-						      <td>the Bird</td>
-						      <td>larrybird@email.com</td>
+						      <td></td>
+						      <td></td>
+						      <td></td>
+							  <td></td>
+							  <td><input type="radio" name = "izaberi"></td>
 						    </tr>
 						    <tr>
 						      <th scope="row">4</th>
-						      <td>John</td>
-						      <td>Doe</td>
-						      <td>johndoe@email.com</td>
+						      <td></td>
+						      <td></td>
+						      <td></td>
+							  <td></td>
+							  <td><input type="radio" name = "izaberi"></td>
 						    </tr>
 						    <tr>
 						      <th scope="row">5</th>
-						      <td>Gary</td>
-						      <td>Bird</td>
-						      <td>garybird@email.com</td>
+						      <td></td>
+						      <td></td>
+						      <td></td>
+							  <td></td>
+							  <td><input type="radio" name = "izaberi"></td>
 						    </tr>
+							
 						  </tbody>
 						</table>
 					</div>
@@ -75,45 +91,51 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="table-wrap">
-						<table class="table table-bordered table-dark table-hover">
+						<table class="table table-bordered table-dark table-hover" style="table-layout: fixed;">
 						  <thead>
 						    <tr>
-						      <th>#</th>
-						      <th>First Name</th>
-						      <th>Last Name</th>
-						      <th>Email</th>
+							<th>#</th>
+						      <th>Naslov</th>
+						      <th>Autor</th>
+						      <th>Godina nastanka</th>
+							  
 						    </tr>
 						  </thead>
 						  <tbody>
 						    <tr>
 						      <th scope="row">1</th>
-						      <td>Mark</td>
-						      <td>Otto</td>
-						      <td>markotto@email.com</td>
+						      <td></td>
+						      <td></td>
+						      <td></td>
+							  
 						    </tr>
 						    <tr>
 						      <th scope="row">2</th>
-						      <td>Jacob</td>
-						      <td>Thornton</td>
-						      <td>jacobthornton@email.com</td>
+						      <td></td>
+						      <td></td>
+						      <td></td>
+							  
 						    </tr>
 						    <tr>
 						      <th scope="row">3</th>
-						      <td>Larry</td>
-						      <td>the Bird</td>
-						      <td>larrybird@email.com</td>
+						      <td></td>
+						      <td></td>
+						      <td></td>
+							  
 						    </tr>
 						    <tr>
 						      <th scope="row">4</th>
-						      <td>John</td>
-						      <td>Doe</td>
-						      <td>johndoe@email.com</td>
+						      <td></td>
+						      <td></td>
+						      <td></td>
+							  
 						    </tr>
 						    <tr>
 						      <th scope="row">5</th>
-						      <td>Gary</td>
-						      <td>Bird</td>
-						      <td>garybird@email.com</td>
+						      <td></td>
+						      <td></td>
+						      <td></td>
+							  
 						    </tr>
 						  </tbody>
 						</table>
@@ -123,6 +145,15 @@
 			</div>
 		</div>
 	</section>
+	</div>
+
+	<div class="dugmici">
+		<button>Dodaj</button>
+		<button>Nadji po autoru</button>
+		<input type="text">
+		<button>Sortitaj po naslovu</button>
+	</div>
+	
 
 
 	</body>

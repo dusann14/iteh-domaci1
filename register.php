@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -9,15 +10,19 @@
 </head>
 
 <body>
-<form>
+<form id = "registracija">
 		<h1>Registracija korisnika</h1>
-		<div>
-			<label for="ime_prezime">Ime i prezime:</label>
-			<input id="ime_prezime" type="text" name="ime_prezime" placeholder="Niko Nikolic">
-		</div>
 		<div>
 			<label for="korisnicko_ime">Korisničko ime:</label>
 			<input id="korisnicko_ime" type="text" name="korisnicko_ime" placeholder="niko.nikolic1">
+		</div>
+		<div>
+			<label for="ime">Ime:</label>
+			<input id="ime" type="text" name="ime" placeholder="Niko">
+		</div>
+		<div>
+			<label for="prezime">Prezime:</label>
+			<input id="prezime" type="text" name="prezime" placeholder="Nikolic">
 		</div>
 		<div>
 			<label for="email">Email adresa:</label>
@@ -32,12 +37,12 @@
 			<input id="ponovi_lozinku" type="text" name="ponovi_lozinku" placeholder="*******">
 		</div>
 		<div>
-			<button><a href="login.php">Registrujte se</a></button>
+			<button type = "submit">Registruj se</button>
 		</div>
 	</form>
 
-
 	<script src="/js/registration_js.js"></script>
+
 </body>
 
 </html>

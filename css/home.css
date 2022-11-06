@@ -11,13 +11,22 @@
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
   
-    
+  .tabele{
+    display: flex;
+  }
+
+  .naslov{
+    text-align: center;
+    color: white;
+    margin-top: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  }
 
   article, aside, figcaption, figure, footer, header, hgroup, main, nav {
     display: block; }
   
   body {
-    display: flex;
+    display: block;
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-size: 1rem;
@@ -1275,7 +1284,10 @@
     .table td {
       padding: 0.75rem;
       vertical-align: top;
-      border-top: 1px solid #dee2e6; }
+      border-top: 1px solid #dee2e6; 
+      word-wrap: break-word;
+      width: fit-content;
+    }
     .table thead th {
       vertical-align: bottom;
       border-bottom: 2px solid #dee2e6; }
@@ -8121,7 +8133,7 @@
  }
   
   .table {
-    min-width: 735px !important;
+    width: 730px !important;
     width: 100%; }
     .table thead th {
       border: none;
@@ -8136,4 +8148,25 @@
       padding: 20px 30px;
       border-bottom: 3px solid #2b3035;
       font-size: 14px; }
+
+
+
+      .dugmici{
+        margin-bottom: 50px;
+        margin-left: 20px;
+      }
+
+      .dugmici button{
+        cursor: pointer;
+        transition: all 1s ease;
+        border-radius: 10px;
+        height: 50px;
+        width: 300px;
+      }
+
+      .dugmici button:hover{
+        background-color: chartreuse;
+      }
+
+
   
