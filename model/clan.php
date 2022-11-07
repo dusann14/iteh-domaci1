@@ -40,7 +40,6 @@ class Clan{
 
     public static function add($userName, $ime, $prezime, $email, $pass, mysqli $conn)
     {
-
         $q = "INSERT INTO clan(userName, ime, prezime, email, pass) VALUES('$userName', '$ime', '$prezime',  '$email', '$pass')";
         return $conn->query($q);
     }

@@ -7,23 +7,25 @@ session_start();
 
 if(isset($_POST['submit'])){
 
-	$userName = mysqli_real_escape_string($conn, $_POST['korisnicko_ime']);
-	$pass = mysqli_real_escape_string($conn, $_POST['lozinka']);
+	$userName = $_POST['korisnicko_ime'];
+	$pass = $_POST['lozinka'];
 
 	$result = Clan::logIn($userName, $pass, $conn);
 
-	if(mysqli_num_rows($result) != 0){
+	if($result->num_rows != 0){
 
-		$row = mysqli_fetch_array($result);
-
-		if($row['userName'] == 'admin'){
-			$_SESSION['admin_name'] = $row['name'];
+		echo '<script type="text/javascript">alert("Uspesno ste se prijavili")</script>';
+		
+		if($userName == 'admin'){
+			$_SESSION['admin'] = $userName;
 			header("Location: admin.php");
+			exit();
 		}else{
-			$_SESSION['user_name'] = $row['name'];
+			$_SESSION['user'] = $userName;
 			header("Location: home.php");
+			exit();
 		}
-		echo '<script type="text/javascript">alert("Uspesno ste se prijavili!")</script>';	
+		
 	}else{
 		echo '<script type="text/javascript">alert("Netacna lozinka ili korisnicko ime")</script>';
 	}
@@ -52,7 +54,7 @@ if(isset($_POST['submit'])){
 				</div>
 			</div>
 			<div class="card-body">
-				<form>
+				<form method="post" action="">
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
