@@ -9,6 +9,7 @@ html, body{
 table {
     margin-top: 10%;
     opacity: 0.95;
+   
 }
 
 .table-sortable tbody tr {
@@ -22,4 +23,8 @@ tbody{
 
 thead{
     background-color: white;
+}
+
+.tableBody td{
+    word-wrap: break-word;
 }

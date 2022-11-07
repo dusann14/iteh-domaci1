@@ -68,6 +68,64 @@ $(document).ready(function() {
     $(".table-sortable thead").disableSelection();
 
 
-
-    $("#add_row").trigger("click");
 });
+
+
+function dodaj(){
+
+    event.preventDefault();
+
+    let inputs = $("#add td input");
+    
+    let naslov = inputs[1].value;
+    let autor = inputs[2].value;
+    let godina = inputs[3].value;
+    let cena = inputs[4].value;
+
+    const string = "naslov=" + naslov + "&" + "autor=" + autor + "&" + "godinaNastanka=" + godina + "&" + "cena=" + cena;
+
+    request = $.ajax({
+        url: "handler/addBook.php",
+        type: "post",
+        data: string
+    });
+
+    request.done(function (response, textStatus, jqXHR) {
+        if (response === "Success") {
+            alert("Knjiga je dodata")
+        } else {
+            alert("Knjiga nije dodata")
+        }
+    })
+
+    request.fail(function (jqXHR, textStatus, errorThrown) {
+        console.log("Desila se greska: " + textStatus, errorThrown)
+    }) 
+
+
+}
+
+function obrisi(id){
+
+    event.preventDefault();
+
+    request = $.ajax({
+        url: "handler/deleteBook.php",
+        type: "post",
+        data: "knjigaId=" + id
+    });
+
+    request.done(function (response, textStatus, jqXHR) {
+        if (response === "Success") {
+            alert("Knjiga je obrisana");
+            $(`#${id}`).remove()
+        } else {
+            alert("Knjiga nije obrisana")
+        }
+    })
+
+    request.fail(function (jqXHR, textStatus, errorThrown) {
+        console.log("Desila se greska: " + textStatus, errorThrown)
+    }) 
+
+}

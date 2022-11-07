@@ -17,9 +17,27 @@ class Knjiga{
         $this->cena = $cena;
     }
 
-    
+    public static function add($naslov, $autor, $godinaNastanka, $cena, mysqli $conn)
+    {
+        $q = "INSERT INTO knjiga(naslov, autor, godinaNastanka, cena) VALUES('$naslov', '$autor', $godinaNastanka,  $cena)";
+        return $conn->query($q);
+    }
 
+    public static function getAll(mysqli $conn){
+        $q = "SELECT * FROM knjiga";
+        return $conn->query($q);
+    }
 
+    public static function getLastId(mysqli $conn){
+        $q = "SELECT knjigaId FROM knjiga ORDER BY knjigaId DESC LIMIT 1";
+        return $conn->query($q);
+    }
+
+    public static function deleteById($knjigaId, mysqli $conn)
+    {
+        $q = "DELETE FROM knjiga WHERE knjigaId=$knjigaId";
+        return $conn->query($q);
+    }
 
 }
 
