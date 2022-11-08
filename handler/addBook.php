@@ -12,3 +12,5 @@ if (isset($_POST['naslov']) && isset($_POST["autor"]) && isset($_POST["godinaNas
         echo "Failed";
     }
 }
+
+?>

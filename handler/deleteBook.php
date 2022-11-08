@@ -12,3 +12,5 @@ if (isset($_POST['knjigaId'])) {
         echo "Failed";
     }
 }
+
+?>

@@ -27,17 +27,6 @@ class Clan{
         return $conn->query($q);
     }
 
-    public static function getByUserName($userName, mysqli $conn){
-        $q = "SELECT * FROM tim WHERE userName = '$userName'";
-        $myArray = array();
-        if ($result = $conn->query($q)) {
-            while ($row = $result->fetch_array(1)) {
-                $myArray[] = $row;
-            }
-        }
-        return $myArray;
-    }
-
     public static function add($userName, $ime, $prezime, $email, $pass, mysqli $conn)
     {
         $q = "INSERT INTO clan(userName, ime, prezime, email, pass) VALUES('$userName', '$ime', '$prezime',  '$email', '$pass')";
