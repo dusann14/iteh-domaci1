@@ -64,3 +64,33 @@ function sortiraj() {
         });
     })
 }
+
+function prikazi() {
+
+    event.preventDefault();
+
+    $('.tableBody').empty()
+    
+    $.get("handler/getAll.php", function (data) {
+        
+        let array = data.split("}")
+        array.pop()
+        
+        array.forEach(element => {
+            element = element + "}"
+            let obj = JSON.parse(element)
+
+            $('.tableBody').append(`
+            <tr id = 'knjiga-${obj.knjigaId}'>
+					<th scope="row">${obj.knjigaId}</th>
+					<td>${obj.naslov}</td>
+					<td>${obj.autor}</td>
+					<td>${obj.godinaNastanka}</td>
+                    <td>${obj.cena}</td>
+                    <td class="radio"><input type="radio" name = "izaberi" value= ${obj.knjigaId}></td>					  
+				</tr>
+        `)
+
+        });
+    })
+}

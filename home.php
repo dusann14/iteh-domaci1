@@ -34,7 +34,7 @@ if(!$result1){
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  	<title>Table 07</title>
+  	<title>Home</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -131,14 +131,18 @@ if(!$result1){
 	</div>
 
 	<div class="dugmici">
-		<div><button onclick="dodajRezervaciju(this)">Dodaj</button></div>
+		<div><button onclick="dodajRezervaciju()">Dodaj</button></div>
 		<br>
 		<div>
 			<button  onclick="pretrazi()">Nadji po autoru</button>
 			<input id = "myInput" type="text" placeholder="Ime autora">
 		</div>
 		<br>
-		<div><button onclick="sortiraj(this)">Sortitaj po naslovu</button></div>	
+		<div><button onclick="sortiraj()">Sortitaj po naslovu</button></div>
+		<br>
+		<div><button onclick="prikazi()">Prikazi sve</button></div>	
+		<br>
+		<div style="display: block;"><a href = "logout.php" style="position:absolute; top: 10px; right: 10px;"><button>Log out</button></div></a>
 	</div>
 	
 	<script>
