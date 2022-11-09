@@ -8133,7 +8133,6 @@
  }
   
   .table {
-    width: 730px !important;
     width: 100%; }
     .table thead th {
       border: none;
@@ -8152,11 +8151,23 @@
 
 
       .dugmici{
+        display: block;
         margin-bottom: 50px;
         margin-left: 20px;
       }
 
-      .dugmici button{
+      .dugmici div{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      input{
+        margin-left: 20px;
+      }
+
+      .dugmici div button{
         cursor: pointer;
         transition: all 1s ease;
         border-radius: 10px;

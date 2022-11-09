@@ -38,6 +38,16 @@ class Knjiga{
         return $conn->query($q);
     }
 
+    public static function getByAutor($autor, $conn){
+        $q = "SELECT * FROM knjiga WHERE autor = '$autor'";
+        return $conn->query($q);
+    }
+
+    public static function sortTable($conn){
+        $q = "SELECT * FROM knjiga ORDER BY naslov ASC";
+        return $conn->query($q);
+    }
+
     public static function deleteById($knjigaId, mysqli $conn)
     {
         $q = "DELETE FROM knjiga WHERE knjigaId=$knjigaId";

@@ -47,6 +47,7 @@ if(!$result1){
 	</head>
 	<body>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="js/home.js"></script>
 
 	<h1 class="naslov">DOBRODOSAO <?php echo $_SESSION['user'] ?></h1>
 	<div class = "tabele">
@@ -71,7 +72,7 @@ if(!$result1){
 							<?php
 								while($red = $result->fetch_array()){
 							?>
-						    <tr id = '<?php echo $red['knjigaId']?>'>
+						    <tr id = 'knjiga-<?php echo $red['knjigaId']?>'>
 						      <th scope="row"><?php echo $red['knjigaId']?></th>
 						      <td><?php echo $red['naslov']?></td>
 						      <td><?php echo $red['autor']?></td>
@@ -111,7 +112,7 @@ if(!$result1){
 						  <?php
 								while($red = $result1->fetch_array()){
 							?>
-						    <tr id = '<?php echo $red['knjigaId']?>'>
+						    <tr id = 'rezervacija-<?php echo $red['knjigaId']?>'>
 						      <th scope="row"><?php echo $red['knjigaId']?></th>
 						      <td><?php echo $red['naslov']?></td>
 						      <td><?php echo $red['autor']?></td>
@@ -130,10 +131,14 @@ if(!$result1){
 	</div>
 
 	<div class="dugmici">
-		<button onclick="dodajRezervaciju()">Dodaj</button>
-		<button>Nadji po autoru</button>
-		<input type="text">
-		<button>Sortitaj po naslovu</button>
+		<div><button onclick="dodajRezervaciju(this)">Dodaj</button></div>
+		<br>
+		<div>
+			<button  onclick="pretrazi()">Nadji po autoru</button>
+			<input id = "myInput" type="text" placeholder="Ime autora">
+		</div>
+		<br>
+		<div><button onclick="sortiraj(this)">Sortitaj po naslovu</button></div>	
 	</div>
 	
 	<script>
@@ -151,7 +156,7 @@ if(!$result1){
 					break;
 				}
 			}
-
+			
 			let userName = $('.naslov')[0].innerText;
 			userName = userName.split(' ')[1];
 
@@ -166,19 +171,35 @@ if(!$result1){
     		request.done(function (response, textStatus, jqXHR) {
 
         		if (response === "Success") {
-
            		 alert("Rezervacija je dodata")
+				 append(knjigaId);
 
         	} else {
-           		 console.log("Rezervacija nije dodata")
+           		 alert("Rezervacija nije dodata, odaberite knjigu")
         	}
     		})
 
    			 request.fail(function (jqXHR, textStatus, errorThrown) {
         		console.log("Desila se greska: " + textStatus, errorThrown)
     		})
+			
 
+		}
 
+		function append(knjigaId){
+
+			let row = $(`#knjiga-${knjigaId} td`);
+
+			console.log(row);
+
+			$("#tabela tbody").append(`
+				<tr id = 'knjiga-${knjigaId}'>
+					<th scope="row">${knjigaId}</th>
+					<td>${row[0].outerText}</td>
+					<td>${row[1].outerText}</td>
+					<td>${row[2].outerText}</td>					  
+				</tr>
+			`)
 		}
 		
 	
