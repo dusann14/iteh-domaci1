@@ -33,6 +33,9 @@ if(isset($_POST['submit'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign up</title>
     <link rel="stylesheet" href="/css/register_css.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Marhey&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -66,6 +69,8 @@ if(isset($_POST['submit'])){
 			<input class = "sub" type="submit" name = "submit" value = "Registruj se">
 		</div>
 	</form>
+	<br>
+	<div style="border-radius: 20px; opacity: 0.9; background-color: black; display: flex; justify-content: center;"><a href="login.php" style= "color: #FFC312; text-decoration: underline;">Vec imate nalog?</a></div>
 
 	<script src="/js/registration_js.js"></script>
 

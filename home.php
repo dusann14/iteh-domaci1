@@ -44,12 +44,18 @@ if(!$result1){
 	
 	<link rel="stylesheet" href="css/home.css">
 
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Carter+One&display=swap" rel="stylesheet">
+
 	</head>
 	<body>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="js/home.js"></script>
 
 	<h1 class="naslov">DOBRODOSAO <?php echo $_SESSION['user'] ?></h1>
+	<br>
+	<div style="display: flex; justify-content: space-around;"><h1 class="naslov">Knjige iz biblioteke</h1><h1 class="naslov">Tvoje knjige</h1></div>
 	<div class = "tabele">
 	<section class="ftco-section">
 		<div class="container">
