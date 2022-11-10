@@ -142,7 +142,7 @@ if(!$result1){
 		<br>
 		<div><button onclick="prikazi()">Prikazi sve</button></div>	
 		<br>
-		<div style="display: block;"><a href = "logout.php" style="position:absolute; top: 10px; right: 10px;"><button>Log out</button></div></a>
+		<div style="display: block;"><a href = "logout.php" style="position:absolute; top: 10px; right: 10px;"><button>Logout</button></div></a>
 	</div>
 	
 	<script>

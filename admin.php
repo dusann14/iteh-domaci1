@@ -12,7 +12,6 @@ if(empty($_SESSION['admin']) || $_SESSION['admin'] == ''){
 
 $result = Knjiga::getAll($conn);
 
-
 if(!$result){
 	echo "Greska kod upita";
 }
@@ -21,6 +20,7 @@ if($result->num_rows == 0){
 	echo "Nema knjiga";
 	die();
 }
+
 
 ?>
 
@@ -46,7 +46,7 @@ if($result->num_rows == 0){
 			<table class="table table-bordered table-hover table-sortable" id="tab_logic">
 				<thead>
 					<tr >
-                        <th class="text-center"> 
+                        <th class="text-center" style="display: none;"> 
 							Id
 						</th>
 						<th class="text-center">
@@ -59,7 +59,7 @@ if($result->num_rows == 0){
 							Godina 
 						</th>
     					<th class="text-center">
-							Cena
+							Cena u dinarima
 						</th>
         				<th class="text-center" style="border-top: 1px solid #ffffff; border-right: 1px solid #ffffff;">
 						</th>
@@ -68,55 +68,58 @@ if($result->num_rows == 0){
 				<tbody class="tableBody">
     				<?php
 					while($red = $result->fetch_array()){
-					?>
+					?>					
 						<tr id='<?php echo $red['knjigaId']?>' data-id="0" class="hidden" >
-                        <td data-name="id">
+                        <td data-name="id" style="display: none;">
 						    <input value="<?php echo $red["knjigaId"]?>" type="text" name='id'  class="form-control"  readonly = "true"/>
 						</td>
 						<td data-name="name">
-						    <input value="<?php echo $red["naslov"]?>" type="text" name='name'  placeholder='Naslov' class="form-control" />
+						    <input value="<?php echo $red["naslov"]?>" type="text" name='name' required placeholder='Naslov' class="form-control" />
 						</td>
 						<td data-name="autor">
-						    <input value="<?php echo $red["autor"]?>" type="text" name='autor' placeholder='Autor' class="form-control" />
+						    <input value="<?php echo $red["autor"]?>" type="text" name='autor' required placeholder='Autor' class="form-control" />
 						</td>
 						<td data-name="godina">
-                             <input value="<?php echo $red["godinaNastanka"]?>" type="text" name='godina' placeholder='Godina' class="form-control" />
+                             <input value="<?php echo $red["godinaNastanka"]?>" type="text" name='godina' required placeholder='Godina' class="form-control" />
 						</td>
     					<td data-name="cena">
-                            <input value="<?php echo $red["cena"]?>" type="text" name='cena' placeholder='Cena' class="form-control" />
+                            <input value="<?php echo $red["cena"]?>" type="text" name='cena' required placeholder='Cena' class="form-control" />
 						</td>
                         <td data-name="del">
-                            <button id = "<?php echo $red["knjigaId"]?>" onclick="obrisi(this.id)" name="del0" class='btn btn-danger glyphicon glyphicon-remove row-remove'><span aria-hidden="true">×</span></button>
+                            <button id = "dugme <?php echo $red["knjigaId"]?>" onclick="obrisi(this.id)" name="del0" class='btn btn-danger glyphicon glyphicon-remove row-remove'><span aria-hidden="true">×</span></button>
                         </td>
 					</tr>
 					<?php
 					}
 					?>
-					<tr id='add' data-id="0" class="hidden" >
-                        <td data-name="id">
+					<tr class="add" data-id="0" class="hidden" >
+                        <td data-name="id" style="display: none;">
 						    <input type="text" name='id' class="form-control"  readonly = "true"/>
 						</td>
 						<td data-name="name">
-						    <input type="text" name='name'  placeholder='Naslov' class="form-control" />
+						    <input type="text" name='name' required placeholder='Naslov' class="form-control" />
 						</td>
 						<td data-name="autor">
-						    <input type="text" name='autor' placeholder='Autor' class="form-control" />
+						    <input type="text" name='autor' required placeholder='Autor' class="form-control" />
 						</td>
 						<td data-name="godina">
-                             <input type="text" name='godina' placeholder='Godina' class="form-control" />
+                             <input type="text" name='godina' required placeholder='Godina' class="form-control" />
 						</td>
     					<td data-name="cena">
-                            <input type="text" name='cena' placeholder='Cena' class="form-control" />
+                            <input type="text" name='cena' required placeholder='Cena' class="form-control" />
 						</td>
                         <td data-name="del">
-                            <button name="del0" class='btn btn-danger glyphicon glyphicon-remove row-remove'><span aria-hidden="true">×</span></button>
+                            <button onclick="obrisi(this.id)" name="del0" class='btn btn-danger glyphicon glyphicon-remove row-remove'><span aria-hidden="true">×</span></button>
                         </td>
+					</tr>
 				</tbody>
 			</table>
 		</div>
 	</div>
 	<a id="add_row" class="btn btn-primary float-right" onclick="dodaj()">Dodaj knjigu</a>
 </div>
+
+<a href="logout.php" style="position: absolute; top: 10px; right:10px; "><button>Logout</button></a>
 
 <script src="/js/admin.js"></script>
 

@@ -28,11 +28,6 @@ class Knjiga{
         return $conn->query($q);
     }
 
-    public static function getLastId(mysqli $conn){
-        $q = "SELECT knjigaId FROM knjiga ORDER BY knjigaId DESC LIMIT 1";
-        return $conn->query($q);
-    }
-
     public static function getByBookId($knjigaId, $conn){
         $q = "SELECT knjigaId, naslov, autor, godinaNastanka FROM knjiga WHERE knjigaId = $knjigaId";
         return $conn->query($q);

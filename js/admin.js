@@ -1,81 +1,9 @@
-$(document).ready(function() {
-    $("#add_row").on("click", function() {
-     
-        var newid = 0;
-        $.each($("#tab_logic tr"), function() {
-            if (parseInt($(this).data("id")) > newid) {
-                newid = parseInt($(this).data("id"));
-            }
-        });
-        newid++;
-        
-        var tr = $("<tr></tr>", {
-            id: "addr"+newid,
-            "data-id": newid
-        });
-        
-  
-        $.each($("#tab_logic tbody tr:nth(0) td"), function() {
-            var td;
-            var cur_td = $(this);
-            
-            var children = cur_td.children();
-            
-
-            if ($(this).data("name") !== undefined) {
-                td = $("<td></td>", {
-                    "data-name": $(cur_td).data("name")
-                });
-                
-                var c = $(cur_td).find($(children[0]).prop('tagName')).clone().val("");
-                c.attr("name", $(cur_td).data("name") + newid);
-                c.appendTo($(td));
-                td.appendTo($(tr));
-            } else {
-                td = $("<td></td>", {
-                    'text': $('#tab_logic tr').length
-                }).appendTo($(tr));
-            }
-        });
-        
-
-        $(tr).appendTo($('#tab_logic'));
-        
-        $(tr).find("td button.row-remove").on("click", function() {
-             $(this).closest("tr").remove();
-        });
-});
-
-
-
-
-   
-    var fixHelperModified = function(e, tr) {
-        var $originals = tr.children();
-        var $helper = tr.clone();
-    
-        $helper.children().each(function(index) {
-            $(this).width($originals.eq(index).width())
-        });
-        
-        return $helper;
-    };
-  
-    $(".table-sortable tbody").sortable({
-        helper: fixHelperModified      
-    }).disableSelection();
-
-    $(".table-sortable thead").disableSelection();
-
-
-});
-
 
 function dodaj(){
 
     event.preventDefault();
 
-    let inputs = $("#add td input");
+    let inputs = $(".tableBody tr:last td input");
     
     let naslov = inputs[1].value;
     let autor = inputs[2].value;
@@ -83,7 +11,7 @@ function dodaj(){
     let cena = inputs[4].value;
 
     const string = "naslov=" + naslov + "&" + "autor=" + autor + "&" + "godinaNastanka=" + godina + "&" + "cena=" + cena;
-
+   
     request = $.ajax({
         url: "handler/addBook.php",
         type: "post",
@@ -91,34 +19,71 @@ function dodaj(){
     });
 
     request.done(function (response, textStatus, jqXHR) {
-        if (response === "Success") {
+        
+        response = response.split(" ")
+
+        if (response[0] === "Success") {
             alert("Knjiga je dodata")
+            append(response[1]);
         } else {
-            alert("Knjiga nije dodata")
+            alert("Knjiga nije dodata, popunite sva polja")
         }
     })
 
     request.fail(function (jqXHR, textStatus, errorThrown) {
         console.log("Desila se greska: " + textStatus, errorThrown)
     }) 
+}
 
+function append(id){
+
+    let lastRow = $(".tableBody tr:last");
+    let lastButton = $(".tableBody tr:last td button");
+
+    lastRow[0].id = id;
+    lastButton[0].id = "dugme " + id;
+
+    $(".tableBody").append(`
+    <tr class="id" data-id="0" class="hidden" >
+    <td style = "display: none" data-name="id">
+        <input type="text" name='id' class="form-control"  readonly = "true"/>
+    </td>
+    <td data-name="name">
+        <input type="text" name='name'  placeholder='Naslov' class="form-control" />
+    </td>
+    <td data-name="autor">
+        <input type="text" name='autor' placeholder='Autor' class="form-control" />
+    </td>
+    <td data-name="godina">
+         <input type="text" name='godina' placeholder='Godina' class="form-control" />
+    </td>
+    <td data-name="cena">
+        <input type="text" name='cena' placeholder='Cena' class="form-control" />
+    </td>
+    <td data-name="del">
+        <button onclick="obrisi(this.id)" name="del0" class='btn btn-danger glyphicon glyphicon-remove row-remove'><span aria-hidden="true">×</span></button>
+    </td>
+    </tr>
+    `)
 
 }
 
 function obrisi(id){
-
+  
     event.preventDefault();
+
+    id = id.split(" ");
 
     request = $.ajax({
         url: "handler/deleteBook.php",
         type: "post",
-        data: "knjigaId=" + id
+        data: "knjigaId=" + id[1]
     });
 
     request.done(function (response, textStatus, jqXHR) {
         if (response === "Success") {
             alert("Knjiga je obrisana");
-            $(`#${id}`).remove()
+            $(`#${id[1]}`).remove()
         } else {
             alert("Knjiga nije obrisana")
         }
